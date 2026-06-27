@@ -844,19 +844,6 @@
         <a href="#" onclick="showView('recover',event)">¿Olvidaste tu contraseña?</a>
       </div>
     </div>
-    <!-- CREAR USUARIO -->
-    <div id="viewRegister" style="display:none">
-      <h3>Crear usuario</h3>
-      <p>Registra un nuevo administrador.</p>
-      <input type="email" id="regEmail" placeholder="Correo electrónico" />
-      <input type="password" id="regPass" placeholder="Contraseña (mín. 6 caracteres)" />
-      <input type="password" id="regPass2" placeholder="Repetir contraseña" />
-      <div class="err" id="regErr"></div>
-      <div class="modal-actions">
-        <button class="primary" onclick="doRegister()">Crear cuenta</button>
-        <button class="ghost" onclick="showView('login')">Volver</button>
-      </div>
-    </div>
     <!-- RECUPERAR CONTRASEÑA -->
     <div id="viewRecover" style="display:none">
       <h3>Recuperar contraseña</h3>
@@ -961,7 +948,7 @@
   function openAdmin(e){ if(e) e.preventDefault(); document.getElementById('adminModal').classList.add('open'); showView('login'); }
   function closeAdmin(){ document.getElementById('adminModal').classList.remove('open'); }
   function showView(name,e){ if(e) e.preventDefault();
-    ['Login','Register','Recover'].forEach(v=>{ document.getElementById('view'+v).style.display = (v.toLowerCase()===name?'block':'none'); });
+    ['Login','Recover'].forEach(v=>{ const el=document.getElementById('view'+v); if(el) el.style.display = (v.toLowerCase()===name?'block':'none'); });
     ['admErr','regErr','recErr'].forEach(id=>{ const el=document.getElementById(id); if(el){ el.textContent=''; el.style.color=''; } });
     const first={login:'admEmail',register:'regEmail',recover:'recEmail'}[name]; const fe=document.getElementById(first); if(fe) fe.focus();
   }
