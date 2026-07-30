@@ -379,6 +379,54 @@
   .wa-float{position:fixed;bottom:22px;right:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.6rem;box-shadow:0 12px 28px -8px rgba(37,211,102,.6);transition:transform .2s}
   .wa-float:hover{transform:scale(1.08)}
 
+  /* ================= CARRO DE COMPRAS ================= */
+  .cart-float{position:fixed;bottom:92px;right:24px;z-index:61;width:54px;height:54px;border-radius:50%;background:var(--tinta);color:#fff;display:grid;place-items:center;cursor:pointer;border:none;box-shadow:0 12px 28px -8px rgba(46,42,37,.6);transition:transform .2s}
+  .cart-float:hover{transform:scale(1.08)}
+  .cart-float svg{width:24px;height:24px}
+  .cart-count{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 5px;border-radius:999px;background:#c0392b;color:#fff;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;display:none;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+  .cart-count.on{display:flex}
+  /* panel lateral */
+  .cart-panel{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--bg-soft);z-index:130;box-shadow:-18px 0 50px -20px rgba(46,42,37,.5);transform:translateX(105%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+  .cart-panel.open{transform:translateX(0)}
+  .cart-back{position:fixed;inset:0;z-index:129;background:rgba(20,16,12,.45);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:opacity .3s}
+  .cart-back.open{opacity:1;visibility:visible}
+  .cart-head{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.3rem;border-bottom:1px solid var(--linea)}
+  .cart-head h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.02em;color:var(--tinta)}
+  .cart-close{background:none;border:none;font-size:1.7rem;line-height:1;color:var(--tinta-soft);cursor:pointer;padding:0 .2rem}
+  .cart-items{flex:1;overflow-y:auto;padding:.6rem 1.3rem}
+  .cart-empty{text-align:center;color:var(--tinta-soft);padding:3rem 1rem;font-size:.92rem}
+  .cart-row{display:flex;gap:.7rem;align-items:flex-start;padding:.9rem 0;border-bottom:1px solid var(--linea)}
+  .cart-row .ci-info{flex:1;min-width:0}
+  .cart-row .ci-name{font-weight:600;font-size:.9rem;color:var(--tinta);line-height:1.35}
+  .cart-row .ci-opt{font-size:.76rem;color:var(--tinta-soft);margin-top:.1rem}
+  .cart-row .ci-price{font-weight:700;font-size:.9rem;color:var(--tinta);white-space:nowrap}
+  .cart-qty{display:inline-flex;align-items:center;gap:.5rem;margin-top:.5rem}
+  .cart-qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--linea);background:#fff;color:var(--tinta);font-size:1rem;line-height:1;cursor:pointer;display:grid;place-items:center}
+  .cart-qty span{font-size:.85rem;font-weight:600;min-width:18px;text-align:center}
+  .ci-remove{background:none;border:none;color:#c0392b;font-size:.72rem;cursor:pointer;margin-top:.5rem;padding:0;letter-spacing:.03em}
+  .cart-foot{padding:1.1rem 1.3rem;border-top:1px solid var(--linea);background:var(--panel)}
+  .cart-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.9rem}
+  .cart-total b{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.2rem;color:var(--tinta)}
+  .cart-note{font-size:.72rem;color:var(--tinta-soft);margin-bottom:.7rem;line-height:1.4}
+  .cart-send{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.9rem;border:none;border-radius:14px;background:#25d366;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.02em;cursor:pointer;transition:filter .2s}
+  .cart-send:hover{filter:brightness(1.05)}
+  .cart-send svg{width:20px;height:20px}
+  /* selector de opciones (cuando hay varios precios) */
+  .opt-modal{position:fixed;inset:0;z-index:140;display:none;align-items:center;justify-content:center;background:rgba(20,16,12,.55);backdrop-filter:blur(4px);padding:1.2rem}
+  .opt-modal.open{display:flex}
+  .opt-box{background:var(--bg-soft);border-radius:18px;max-width:380px;width:100%;padding:1.4rem;box-shadow:var(--sombra)}
+  .opt-box h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1rem;color:var(--tinta);margin-bottom:.3rem}
+  .opt-box p{font-size:.8rem;color:var(--tinta-soft);margin-bottom:1rem}
+  .opt-choice{display:flex;justify-content:space-between;align-items:center;gap:1rem;width:100%;padding:.85rem 1rem;margin-bottom:.6rem;border:1px solid var(--linea);border-radius:12px;background:#fff;cursor:pointer;text-align:left;transition:border-color .15s,transform .1s}
+  .opt-choice:hover{border-color:var(--taupe-dark);transform:translateY(-1px)}
+  .opt-choice .oc-label{font-size:.85rem;color:var(--tinta-soft)}
+  .opt-choice .oc-price{font-weight:700;color:var(--tinta);white-space:nowrap}
+  .opt-cancel{display:block;width:100%;margin-top:.3rem;padding:.6rem;background:none;border:none;color:var(--tinta-soft);font-size:.82rem;cursor:pointer}
+  /* aviso "agregado" */
+  .cart-toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(30px);z-index:200;background:var(--tinta);color:#fff;padding:.8rem 1.4rem;border-radius:999px;font-size:.85rem;font-weight:600;letter-spacing:.02em;box-shadow:0 12px 30px -10px rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .3s,transform .3s;display:flex;align-items:center;gap:.5rem}
+  .cart-toast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  @media (max-width:480px){ .cart-float{bottom:88px;right:20px} }
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
@@ -1015,6 +1063,138 @@
 </div>
 
 <a class="wa-float" href="https://wa.me/56940837035?text=Hola%20Estética%20Tecnológica,%20quiero%20agendar%20una%20hora" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ico" viewBox="0 0 24 24"><use href="#icoWa"></use></svg></a>
+
+<!-- ================= CARRO DE COMPRAS ================= -->
+<button class="cart-float" id="cartFloat" onclick="cartOpen()" aria-label="Ver carro">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+  <span class="cart-count" id="cartCount">0</span>
+</button>
+<div class="cart-back" id="cartBack" onclick="cartClose()"></div>
+<aside class="cart-panel" id="cartPanel" aria-label="Carro de compras">
+  <div class="cart-head">
+    <h3>Tu selección</h3>
+    <button class="cart-close" onclick="cartClose()" aria-label="Cerrar">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-total"><span>Total</span><b id="cartTotal">$0</b></div>
+    <div class="cart-note" id="cartNote"></div>
+    <button class="cart-send" onclick="cartCheckout()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.31-1.96 1.36-.5.05-1.14.24-3.71-.79-3.11-1.26-5.11-4.44-5.27-4.65-.15-.21-1.26-1.68-1.26-3.2 0-1.52.8-2.27 1.08-2.58.28-.31.61-.38.81-.38.2 0 .41.01.58.02.19.01.44-.07.69.53.24.6.83 2.06.9 2.21.07.15.12.33.02.53-.09.2-.14.33-.28.5-.14.17-.29.38-.42.51-.14.14-.28.29-.12.56.16.27.72 1.18 1.54 1.92 1.06.94 1.95 1.24 2.22 1.38.27.14.43.12.59-.07.16-.19.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.14.45.2.52.31.07.12.07.68-.17 1.36z"/></svg>
+      Pedir por WhatsApp
+    </button>
+  </div>
+</aside>
+<!-- selector cuando hay varios precios -->
+<div class="opt-modal" id="optModal">
+  <div class="opt-box">
+    <h4 id="optTitle"></h4>
+    <p>Elige la opción que quieres agregar:</p>
+    <div id="optChoices"></div>
+    <button class="opt-cancel" onclick="cartCloseOpt()">Cancelar</button>
+  </div>
+</div>
+<div class="cart-toast" id="cartToast"></div>
+
+<script>
+/* ================= CARRO DE COMPRAS (pedido por WhatsApp) ================= */
+(function(){
+  var LS='etCart', CART=[];
+  try{ CART=JSON.parse(localStorage.getItem(LS))||[]; }catch(e){ CART=[]; }
+  function save(){ try{ localStorage.setItem(LS, JSON.stringify(CART)); }catch(e){} }
+  function parsePrice(t){ if(!t) return null; var d=(''+t).replace(/[^0-9]/g,''); return d? parseInt(d,10): null; }
+  function fmt(n){ if(n==null) return 'A consultar'; return '$'+ (''+n).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+  function esc(s){ return (''+s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function updateUI(){
+    var count=CART.reduce(function(s,i){return s+i.qty;},0);
+    var badge=document.getElementById('cartCount');
+    if(badge){ badge.textContent=count; badge.classList.toggle('on', count>0); }
+    var wrap=document.getElementById('cartItems'); if(!wrap) return;
+    if(!CART.length){
+      wrap.innerHTML='<div class="cart-empty">Tu selección está vacía.<br>Toca <b>“lo quiero!”</b> en un tratamiento para agregarlo aquí.</div>';
+    } else {
+      wrap.innerHTML=CART.map(function(it,idx){
+        return '<div class="cart-row"><div class="ci-info">'+
+          '<div class="ci-name">'+esc(it.name)+'</div>'+
+          (it.label? '<div class="ci-opt">'+esc(it.label)+'</div>':'')+
+          '<div class="cart-qty"><button onclick="cartDec('+idx+')" aria-label="Quitar uno">−</button><span>'+it.qty+'</span><button onclick="cartInc('+idx+')" aria-label="Agregar uno">+</button></div>'+
+          '<button class="ci-remove" onclick="cartRemove('+idx+')">Quitar</button></div>'+
+          '<div class="ci-price">'+ fmt(it.price!=null? it.price*it.qty : null) +'</div></div>';
+      }).join('');
+    }
+    var total=CART.reduce(function(s,i){return s+((i.price||0)*i.qty);},0);
+    var tEl=document.getElementById('cartTotal'); if(tEl) tEl.textContent=fmt(total);
+    var hasC=CART.some(function(i){return i.price==null;});
+    var nEl=document.getElementById('cartNote'); if(nEl) nEl.textContent = hasC? 'Algunos valores se confirman por WhatsApp.' : '';
+  }
+
+  function addToCart(name,label,price){
+    var f=null;
+    for(var i=0;i<CART.length;i++){ if(CART[i].name===name && CART[i].label===label){ f=CART[i]; break; } }
+    if(f){ f.qty++; } else { CART.push({name:name,label:label,price:price,qty:1}); }
+    save(); updateUI(); toast('Agregado a tu selección'); pulse();
+  }
+  window.cartInc=function(i){ CART[i].qty++; save(); updateUI(); };
+  window.cartDec=function(i){ CART[i].qty--; if(CART[i].qty<=0) CART.splice(i,1); save(); updateUI(); };
+  window.cartRemove=function(i){ CART.splice(i,1); save(); updateUI(); };
+  window.cartOpen=function(){ var p=document.getElementById('cartPanel'),b=document.getElementById('cartBack'); if(p)p.classList.add('open'); if(b)b.classList.add('open'); };
+  window.cartClose=function(){ var p=document.getElementById('cartPanel'),b=document.getElementById('cartBack'); if(p)p.classList.remove('open'); if(b)b.classList.remove('open'); };
+  window.cartCloseOpt=function(){ var m=document.getElementById('optModal'); if(m)m.classList.remove('open'); };
+
+  function openChooser(name,opts){
+    document.getElementById('optTitle').textContent=name;
+    var box=document.getElementById('optChoices');
+    box.innerHTML=opts.map(function(o,i){
+      return '<button class="opt-choice" data-i="'+i+'"><span class="oc-label">'+esc(o.label||'Opción')+'</span><span class="oc-price">'+fmt(o.price)+'</span></button>';
+    }).join('');
+    box.querySelectorAll('.opt-choice').forEach(function(btn){
+      btn.onclick=function(){ var o=opts[+btn.getAttribute('data-i')]; addToCart(name,o.label,o.price); cartCloseOpt(); cartOpen(); };
+    });
+    document.getElementById('optModal').classList.add('open');
+  }
+
+  function readCard(card){
+    var h=card.querySelector('h3'); var name=h? h.textContent.trim():'Tratamiento';
+    var opts=[];
+    card.querySelectorAll('.price .row').forEach(function(r){
+      var b=r.querySelector('b'), s=r.querySelector('small');
+      opts.push({label:s? s.textContent.trim():'', price: parsePrice(b? b.textContent:'')});
+    });
+    if(!opts.length){ var b=card.querySelector('.price b'); opts.push({label:'', price: parsePrice(b? b.textContent:'')}); }
+    return {name:name, opts:opts};
+  }
+
+  // Clic en "lo quiero!" -> agrega al carro (delegación: sirve aunque el grid se recargue de la nube)
+  document.addEventListener('click', function(e){
+    if(!e.target.closest) return;
+    var btn=e.target.closest('#grid .card .btn');
+    if(!btn) return;
+    e.preventDefault();
+    var card=btn.closest('.card'); if(!card) return;
+    var d=readCard(card);
+    if(d.opts.length>1){ openChooser(d.name,d.opts); }
+    else { addToCart(d.name, d.opts[0].label, d.opts[0].price); cartOpen(); }
+  });
+
+  window.cartCheckout=function(){
+    if(!CART.length){ toast('Tu selección está vacía'); return; }
+    var lines=CART.map(function(it){
+      var p= it.price!=null? fmt(it.price*it.qty) : 'a consultar';
+      return '• '+it.name+(it.label? ' ('+it.label+')':'')+(it.qty>1? ' x'+it.qty:'')+' — '+p;
+    });
+    var total=CART.reduce(function(s,i){return s+((i.price||0)*i.qty);},0);
+    var msg='Hola Estética Tecnológica! Quiero pedir:\n'+lines.join('\n')+'\n\nTotal: '+fmt(total);
+    window.open('https://wa.me/56940837035?text='+encodeURIComponent(msg),'_blank','noopener');
+  };
+
+  var toastT;
+  function toast(t){ var el=document.getElementById('cartToast'); if(!el) return; el.textContent='✓ '+t; el.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(function(){ el.classList.remove('show'); },1800); }
+  function pulse(){ var f=document.getElementById('cartFloat'); if(!f) return; f.style.transform='scale(1.18)'; setTimeout(function(){ f.style.transform=''; },180); }
+
+  updateUI();
+})();
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
